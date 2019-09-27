@@ -4,8 +4,7 @@ import requests
 import datetime
 from models.Lead import LeadModel
 
-
-
+  
 class create_lead(Resource):
     def post(self):
         data = request.get_json()
@@ -18,23 +17,30 @@ class create_lead(Resource):
         
         lead = LeadModel(data['firstName'],data['lastName'],data['email'],data['phone'],data['country'],data['sourceID'],data['affID'],dt_string,False)
         
-        #/////Insert/////
+        #Inserting to DB
         try:
             lead.save_to_db()
         except:
             return {"message":"An error has occured while inserting the lead to DB{}".format(lead)}, 500
-        try:
-            LeadModel.send_lead_rmt(lead)
-        except:
-            return {"message":"An error has occured while inserting the lead to CRM{}".format(lead)}, 500
-        return {'message' : 'Lead created successfully'}
+            
+        #Inserting to CRM
+        r = LeadModel.send_lead_rmt(lead)
+        message = r['message']
+
+        if(message == 'OK'):
+            return {'message' : 'Lead created successfully'}, 201
+        else:
+            return {'message' : 'Something went wrong:{}'.format(message)}, 500
+        
+        
+
 
 class get_lead_by_stat(Resource): 
     def get(self):
         connection = mysql.connector.connect(host="remotemysql.com",port=3306,user="oAJmLqZI4I",passwd="otYDdVSoi9",db="oAJmLqZI4I")
         cursor = connection.cursor()
 
-        query = "SELECT * FROM CRM_Test5 WHERE depStatus = True"
+        query = "SELECT * FROM CRM_Production WHERE depStatus = True"
         cursor.execute(query)
         Leads = cursor.fetchall()
         
