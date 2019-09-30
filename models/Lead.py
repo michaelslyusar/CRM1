@@ -55,8 +55,8 @@ class LeadModel(db.Model):
                 'email'               : self.email,
                 'phone_number'        : self.phone,
                 'country'             : self.country,  #ISO 3166-1 alpha-2; ISO 3166-1 alpha-3
-                'language'            : 'English',
-                'promo_code'          : '907'
+                'language'            : 'Italian',
+                'promo_code'          : '108'
                 }
         r = requests.post('https://crm.rmt500.com/api/v2/lead', data = new_lead)
         r_dict = r.json()
