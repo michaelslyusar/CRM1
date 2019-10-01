@@ -5,5 +5,3 @@ uwsgi
 requests
 datetime
 mysqlclient
-sys
-logging
