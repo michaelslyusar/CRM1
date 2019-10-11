@@ -2,7 +2,7 @@ from flask import Flask, request
 from flask_restful import Resource, reqparse
 import requests
 from db import db
-
+import logging
 
 class LeadModel(db.Model):
     __tablename__ = 'CRM_Production'
@@ -56,12 +56,33 @@ class LeadModel(db.Model):
                 'phone_number'        : self.phone,
                 'country'             : self.country,  #ISO 3166-1 alpha-2; ISO 3166-1 alpha-3
                 'language'            : 'Italian',
-                'promo_code'          : '108'
+                'promo_code'          : '127'
                 }
-        r = requests.post('https://crm.rmt500.com/api/v2/lead', data = new_lead)
+        try:
+            r = requests.post('https://crm.rmt500.com/api/v2/lead', data = new_lead)
+        except Exception as e:
+            return e
         r_dict = r.json()
         return(r_dict)
 
     @classmethod
     def find_by_email(cls, email):
         return cls.query.filter_by(email = email).first()
+    
+
+    def logger(string):
+        logger = logging.getLogger(__name__)
+        logger.setLevel(logging.DEBUG)
+
+        formatter = logging.Formatter('%(asctime)s:%(name)s:%(message)s')
+        file_handler = logging.FileHandler('sample.log')
+        file_handler.setLevel(logging.ERROR)
+        file_handler.setFormatter(formatter)
+
+        stream_handler = logging.StreamHandler()
+        stream_handler.setFormatter(formatter)
+
+        logger.addHandler(file_handler)
+        logger.addHandler(stream_handler)
+
+        logger.error(string)

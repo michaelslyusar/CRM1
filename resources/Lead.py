@@ -4,8 +4,8 @@ import requests
 import datetime
 from models.Lead import LeadModel
 
-  
 class create_lead(Resource):
+
     def post(self):
         data = request.get_json()
         email_check = data['email']
@@ -20,19 +20,23 @@ class create_lead(Resource):
         #Inserting to DB
         try:
             lead.save_to_db()
-        except:
-            return {"message":"An error has occured while inserting the lead to DB{}".format(lead)}, 500
+        except Exception as e:
+            LeadModel.logger("message : Something went wrong when inserting to DB {}".format(e))
+            return {"message":"An error has occured while inserting the lead to DB{}".format(e)}, 500
+
             
         #Inserting to CRM
         r = LeadModel.send_lead_rmt(lead)
         message = r['message']
+        try:
+            if(message == 'OK'):
+                return {'message' : 'Lead created successfully'}, 201
+            else:
+                return {'message' : 'Something went wrong:{}'.format(r)}, 500
+        except Exception as e:
+            LeadModel.logger("message : Something went wrong when inserting into CRM{}".format(e))
 
-        if(message == 'OK'):
-            return {'message' : 'Lead created successfully'}, 201
-        else:
-            return {'message' : 'Something went wrong:{}'.format(message)}, 500
-        
-        
+                
 
 
 class get_lead_by_stat(Resource): 

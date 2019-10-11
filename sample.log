@@ -1,0 +1,3 @@
+2019-10-04 13:08:12,473:resources.Lead:message : An error has occured while inserting the lead to DB<LeadModel (transient 69981488)>
+2019-10-04 13:10:05,814:resources.Lead:message : An error has occured while inserting the lead to DB<LeadModel (transient 83809712)>
+2019-10-04 13:10:32,154:resources.Lead:message : An error has occured while inserting the lead to DB<LeadModel (transient 79566128)>
