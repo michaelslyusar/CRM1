@@ -13,7 +13,7 @@ class LeadModel(db.Model):
     email         = db.Column(db.String(30))
     phone         = db.Column(db.String(30))
     country       = db.Column(db.String(30))
-    sourceID      = db.Column(db.Integer)
+    sourceID      = db.Column(db.String(30))
     affID         = db.Column(db.Integer)
     date_created  = db.Column(db.Date)
     depStatus     = db.Column(db.Boolean)
