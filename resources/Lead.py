@@ -36,7 +36,6 @@ class create_lead(Resource):
         except Exception as e:
             LeadModel.logger("message : Something went wrong when inserting into CRM{}".format(e))
 
-                
 
 
 class get_lead_by_stat(Resource): 

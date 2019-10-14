@@ -1,4 +1,4 @@
-import os
+
 from flask import Flask, request
 from flask_restful import Api
 from resources.Lead import get_lead_by_stat, create_lead

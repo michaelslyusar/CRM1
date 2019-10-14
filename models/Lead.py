@@ -5,7 +5,7 @@ from db import db
 import logging
 
 class LeadModel(db.Model):
-    __tablename__ = 'CRM_Production'
+    __tablename__ = 'CRM'
 
     ID            = db.Column(db.Integer, primary_key = True)
     firstName     = db.Column(db.String(30))
@@ -18,11 +18,11 @@ class LeadModel(db.Model):
     date_created  = db.Column(db.Date)
     depStatus     = db.Column(db.Boolean)
 
-    TABLE_NAME = 'CRM_Production'
+    TABLE_NAME = 'CRM'
 
     def __init__(self, firstName, lastName, email, phone, country, sourceID, affID, date_created, depStatus):
-        self.firstName = firstName
-        self.lastName = lastName
+        self.firstName = firstName.text
+        self.lastName = lastName.text
         self.email = email
         self.phone = phone  
         self.country = country   
