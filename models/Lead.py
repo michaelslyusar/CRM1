@@ -21,8 +21,8 @@ class LeadModel(db.Model):
     TABLE_NAME = 'CRM'
 
     def __init__(self, firstName, lastName, email, phone, country, sourceID, affID, date_created, depStatus):
-        self.firstName = firstName.text
-        self.lastName = lastName.text
+        self.firstName = firstName
+        self.lastName = lastName
         self.email = email
         self.phone = phone  
         self.country = country   
