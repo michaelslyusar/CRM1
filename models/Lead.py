@@ -55,7 +55,7 @@ class LeadModel(db.Model):
                 'email'               : self.email,
                 'phone_number'        : self.phone,
                 'country'             : self.country,  #ISO 3166-1 alpha-2; ISO 3166-1 alpha-3
-                'language'            : 'Italian',
+                'language'            : 'English',
                 'promo_code'          : '128'
                 }
         try:
