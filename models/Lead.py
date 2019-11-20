@@ -5,7 +5,7 @@ from db import db
 import logging
 
 class LeadModel(db.Model):
-    __tablename__ = 'CRM'
+    __tablename__ = 'CRM_K'
 
     ID            = db.Column(db.Integer, primary_key = True)
     firstName     = db.Column(db.String(30))
@@ -18,7 +18,7 @@ class LeadModel(db.Model):
     date_created  = db.Column(db.Date)
     depStatus     = db.Column(db.Boolean)
 
-    TABLE_NAME = 'CRM'
+    TABLE_NAME = 'CRM_K'
 
     def __init__(self, firstName, lastName, email, phone, country, sourceID, affID, date_created, depStatus):
         self.firstName = firstName
@@ -56,7 +56,7 @@ class LeadModel(db.Model):
                 'phone_number'        : self.phone,
                 'country'             : self.country,  #ISO 3166-1 alpha-2; ISO 3166-1 alpha-3
                 'language'            : 'Italian',
-                'promo_code'          : '127'
+                'promo_code'          : '128'
                 }
         try:
             r = requests.post('https://crm.rmt500.com/api/v2/lead', data = new_lead)
