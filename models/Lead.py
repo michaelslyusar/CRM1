@@ -59,7 +59,7 @@ class LeadModel(db.Model):
                 'promo_code'          : '128'
                 }
         try:
-            r = requests.post('https://crm.rmt500.com/api/v2/lead', data = new_lead)
+            r = requests.post('https://crm.rtm500.com/api/v2/lead', data = new_lead)
         except Exception as e:
             return e
         r_dict = r.json()
