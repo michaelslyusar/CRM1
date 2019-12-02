@@ -56,10 +56,10 @@ class LeadModel(db.Model):
                 promo = "128"
                 lang = "English"
             elif(self.sourceID == "2"): #Ita
-                promo = "127"
+                promo = "126"
                 lang = "Italian"
             elif(self.sourceID == "3"): #Spa
-                promo = "126"
+                promo = "128"
                 lang = "Spanish"
             else:                      #Error
                 promo = "128"
