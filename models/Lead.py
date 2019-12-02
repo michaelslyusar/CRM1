@@ -6,7 +6,7 @@ import logging
 
 class LeadModel(db.Model):
     __tablename__ = 'CRM_K'
-
+    
     ID            = db.Column(db.Integer, primary_key = True)
     firstName     = db.Column(db.String(30))
     lastName      = db.Column(db.String(30))
@@ -49,14 +49,34 @@ class LeadModel(db.Model):
         db.session.commit()
 
     def send_lead_rmt(self):
+        
+        
+        if(self.affID == 9):   #Kosovo
+            if(self.sourceID == "1"):  #Eng
+                promo = "128"
+                lang = "English"
+            elif(self.sourceID == "2"): #Ita
+                promo = "127"
+                lang = "Italian"
+            elif(self.sourceID == "3"): #Spa
+                promo = "126"
+                lang = "Spanish"
+            else:                      #Error
+                promo = "128"
+                lang = "English"
+        else:
+            promo = "128"
+            lang = "English"
+
+
         new_lead = {
                 'first_name'          : self.firstName,
                 'last_name'           : self.lastName,
                 'email'               : self.email,
                 'phone_number'        : self.phone,
                 'country'             : self.country,  #ISO 3166-1 alpha-2; ISO 3166-1 alpha-3
-                'language'            : 'English',
-                'promo_code'          : '128'
+                'language'            : lang,
+                'promo_code'          : promo
                 }
         try:
             r = requests.post('https://crm.rtm500.com/api/v2/lead', data = new_lead)
