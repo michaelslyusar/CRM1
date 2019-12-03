@@ -61,6 +61,9 @@ class LeadModel(db.Model):
             elif(self.sourceID == "3"): #Spa
                 promo = "128"
                 lang = "Spanish"
+            elif(self.sourceID == "4"): #Spa
+                promo = "127"
+                lang = "Russian"
             else:                      #Error
                 promo = "128"
                 lang = "English"
