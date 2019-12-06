@@ -33,7 +33,8 @@ class LeadModel(db.Model):
         
     
     def json(self):
-        return{'firsName' : self.firstName,
+        return{ 
+                'firsName' : self.firstName,
                 'lastName' :self.lastName,
                 'email' :self.email,
                 'phone' :self.phone, 
@@ -41,7 +42,8 @@ class LeadModel(db.Model):
                 'sourceID' :self.sourceID, 
                 'affID' :self.affID,     
                 'date_created' :self.date_created,
-                'depStatus' :self.depStatus}
+                'depStatus' :self.depStatus
+                }
 
     
     def save_to_db(self):
@@ -50,8 +52,7 @@ class LeadModel(db.Model):
 
     def send_lead_rmt(self):
         
-        
-        if(self.affID == 9):   #Kosovo
+        if(self.affID == 9):   #######Kosovo
             if(self.sourceID == "1"):  #Eng
                 promo = "128"
                 lang = "English"
@@ -61,14 +62,24 @@ class LeadModel(db.Model):
             elif(self.sourceID == "3"): #Spa
                 promo = "128"
                 lang = "Spanish"
-            elif(self.sourceID == "4"): #Spa
+            elif(self.sourceID == "4"): #Rus
                 promo = "127"
                 lang = "Russian"
             else:                      #Error
                 promo = "128"
                 lang = "English"
+        if(self.affID == 11):   #######Roman
+            if(self.sourceID == "1"):  #Eng
+                promo = "129"
+                lang = "Russian"
+            elif(self.sourceID == "2"): #Ita
+                promo = "129"
+                lang = "Russian"
+            else:                       #Error
+                promo = "129"
+                lang = "Russian"
         else:
-            promo = "128"
+            promo = "126"
             lang = "English"
 
 
