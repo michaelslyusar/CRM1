@@ -70,7 +70,7 @@ class LeadModel(db.Model):
                 lang = "Russian"
                 comment = ""
             else:                      #Error
-                promo = "128"
+                promo = "124"
                 lang = "English"
                 comment = ""
         elif(self.affID == 11):   #######Roman
