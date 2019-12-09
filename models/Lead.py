@@ -56,31 +56,40 @@ class LeadModel(db.Model):
             if(self.sourceID == "1"):  #Eng
                 promo = "128"
                 lang = "English"
+                comment = ""
             elif(self.sourceID == "2"): #Ita
                 promo = "126"
                 lang = "Italian"
+                comment = ""
             elif(self.sourceID == "3"): #Spa
                 promo = "128"
                 lang = "Spanish"
+                comment = ""
             elif(self.sourceID == "4"): #Rus
                 promo = "127"
                 lang = "Russian"
+                comment = ""
             else:                      #Error
                 promo = "128"
                 lang = "English"
-        if(self.affID == 11):   #######Roman
+                comment = ""
+        elif(self.affID == 11):   #######Roman
             if(self.sourceID == "1"):  #Eng
                 promo = "129"
                 lang = "Russian"
+                comment = ""
             elif(self.sourceID == "2"): #Ita
                 promo = "129"
                 lang = "Russian"
+                comment = ""
             else:                       #Error
                 promo = "129"
                 lang = "Russian"
+                comment = ""
         else:
-            promo = "126"
+            promo = "124"
             lang = "English"
+            comment = ""
 
 
         new_lead = {
@@ -90,7 +99,8 @@ class LeadModel(db.Model):
                 'phone_number'        : self.phone,
                 'country'             : self.country,  #ISO 3166-1 alpha-2; ISO 3166-1 alpha-3
                 'language'            : lang,
-                'promo_code'          : promo
+                'promo_code'          : promo,
+                'comment'             : comment
                 }
         try:
             r = requests.post('https://crm.rtm500.com/api/v2/lead', data = new_lead)
