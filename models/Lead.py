@@ -86,6 +86,15 @@ class LeadModel(db.Model):
                 promo = "129"
                 lang = "Russian"
                 comment = ""
+        elif(self.affID == 12):   #######TP Brandiing 
+            if(self.sourceID == "1"):  #rus
+                promo = "123"
+                lang = "Russian"
+                comment = ""
+            else:                       #Error
+                promo = "124"
+                lang = "Russian"
+                comment = ""
         else:
             promo = "124"
             lang = "English"
