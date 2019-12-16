@@ -50,6 +50,7 @@ class LeadModel(db.Model):
         db.session.add(self)
         db.session.commit()
 
+
     def send_lead_rmt(self):
         
         if(self.affID == 9):   #######Kosovo
@@ -108,8 +109,7 @@ class LeadModel(db.Model):
                 'phone_number'        : self.phone,
                 'country'             : self.country,  #ISO 3166-1 alpha-2; ISO 3166-1 alpha-3
                 'language'            : lang,
-                'promo_code'          : promo,
-                'comment'             : comment
+                'promo_code'          : promo
                 }
         try:
             r = requests.post('https://crm.rtm500.com/api/v2/lead', data = new_lead)

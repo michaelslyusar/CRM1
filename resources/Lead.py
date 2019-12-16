@@ -20,21 +20,22 @@ class create_lead(Resource):
         #Inserting to DB
         try:
             lead.save_to_db()
+            return {"message":"Lead was generated successfully"}, 200
         except Exception as e:
             LeadModel.logger("message : Something went wrong when inserting to DB {}".format(e))
             return {"message":"An error has occured while inserting the lead to DB{}".format(e)}, 500
 
             
         #Inserting to CRM
-        r = LeadModel.send_lead_rmt(lead)
-        message = r['message']
-        try:
-            if(message == 'OK'):
-                return {'message' : 'Lead created successfully'}, 201
-            else:
-                return {'message' : 'Something went wrong:{}'.format(r)}, 500
-        except Exception as e:
-            LeadModel.logger("message : Something went wrong when inserting into CRM{}".format(e))
+        #r = LeadModel.send_lead_rmt(lead)
+        #message = r['message']
+        #try:
+        #    if(message == 'OK'):
+        #        return {'message' : 'Lead created successfully'}, 201
+        #    else:
+        #        return {'message' : 'Something went wrong:{}'.format(r)}, 500
+        #except Exception as e:
+        #    LeadModel.logger("message : Something went wrong when inserting into CRM{}".format(e))
 
 
 
