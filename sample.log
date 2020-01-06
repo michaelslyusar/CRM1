@@ -2,3 +2,21 @@
 2019-10-04 13:10:05,814:resources.Lead:message : An error has occured while inserting the lead to DB<LeadModel (transient 83809712)>
 2019-10-04 13:10:32,154:resources.Lead:message : An error has occured while inserting the lead to DB<LeadModel (transient 79566128)>
 2019-12-16 10:51:01,869:models.Lead:message : Something went wrong when inserting to DB 'NoneType' object has no attribute 'json'
+2019-12-27 11:45:57,255:models.Lead:message : Something went wrong when inserting to DB 0
+2019-12-27 11:46:21,489:models.Lead:message : Something went wrong when inserting to DB 0
+2019-12-27 11:46:21,489:models.Lead:message : Something went wrong when inserting to DB 0
+2019-12-28 11:11:42,801:models.Lead:message : Something went wrong when inserting to DB 'message'
+2019-12-28 11:46:46,892:models.Lead:message : Something went wrong when inserting to DB string indices must be integers
+2019-12-28 12:01:21,273:models.Lead:message : Something went wrong when inserting to DB 'status'
+2019-12-28 12:02:20,363:models.Lead:message : Something went wrong when inserting to DB name 'message' is not defined
+2019-12-30 08:32:43,930:models.Lead:message : Something went wrong when inserting to DB 'TypeError' object is not subscriptable
+2019-12-30 08:36:55,038:models.Lead:message : Something went wrong when inserting to DB 'NameError' object is not subscriptable
+2019-12-30 08:38:23,967:models.Lead:message : Something went wrong when inserting to DB 'NameError' object is not subscriptable
+2019-12-30 08:38:53,246:models.Lead:message : Something went wrong when inserting to DB 'NameError' object is not subscriptable
+2019-12-30 08:39:32,025:models.Lead:message : Something went wrong when inserting to DB 'firstName'
+2019-12-30 08:40:20,137:models.Lead:message : Something went wrong when inserting to DB string indices must be integers
+2019-12-30 08:40:49,987:models.Lead:message : Something went wrong when inserting to DB 'status'
+2019-12-30 08:43:01,566:models.Lead:message : Something went wrong when inserting to DB 0
+2019-12-30 08:43:25,763:models.Lead:message : Something went wrong when inserting to DB 1
+2019-12-30 08:44:51,116:models.Lead:message : Something went wrong when inserting to DB 'firstName'
+2020-01-06 11:21:54,087:models.Lead:message : Something went wrong when inserting to DB local variable 'r' referenced before assignment

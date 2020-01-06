@@ -3,6 +3,7 @@ from flask_restful import Resource, reqparse
 import requests
 from db import db
 import logging
+from flask import jsonify
 
 class LeadModel(db.Model):
     __tablename__ = 'CRM_K'
@@ -20,18 +21,19 @@ class LeadModel(db.Model):
 
     TABLE_NAME = 'CRM_K'
 
-    def __init__(self, firstName, lastName, email, phone, country, sourceID, affID, date_created, depStatus):
+    def __init__(self, firstName, lastName, email, phone, country, ip ,prefix,sourceID, affID, date_created, depStatus):
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
         self.phone = phone  
-        self.country = country   
+        self.country = country  
+        self.ip = ip 
+        self.prefix = prefix  
         self.sourceID = sourceID 
         self.affID = affID     
         self.date_created = date_created
         self.depStatus = depStatus
-        
-    
+
     def json(self):
         return{ 
                 'firsName' : self.firstName,
@@ -87,20 +89,10 @@ class LeadModel(db.Model):
                 promo = "129"
                 lang = "Russian"
                 comment = ""
-        elif(self.affID == 12):   #######TP Brandiing 
-            if(self.sourceID == "1"):  #rus
-                promo = "123"
-                lang = "Russian"
-                comment = ""
-            else:                       #Error
-                promo = "124"
-                lang = "Russian"
-                comment = ""
-        else:
+        else:                           #Error
             promo = "124"
             lang = "English"
             comment = ""
-
 
         new_lead = {
                 'first_name'          : self.firstName,
@@ -116,7 +108,37 @@ class LeadModel(db.Model):
         except Exception as e:
             return e
         r_dict = r.json()
+        return(new_lead)
+
+######################   Branding   ###################################
+    def send_lead_branding(self):
+        
+        headers = { 'x-trackbox-username':'GU_LE',
+                    'x-trackbox-password':'Aa1234567',
+                    'x-api-key':'2643889w34df345676ssdas323tgc738',
+                    'Content-Type':'application/json'
+                }
+
+        new_lead = {
+                    'ai'        :'2958153',
+	                'ci'        :'103', 
+	                'gi'        :'135', 
+	                'userip'    :self.ip, ##
+	                'firstname' :self.firstName, 
+	                'lastname'  :self.lastName, 
+	                'email'     :self.email, 
+	                'password'  :'Aa123456',
+	                'phone'     :self.phone,
+	                'prefix'    :self.prefix ##
+                    }
+        
+        try:
+            r = requests.post('https://platform.brandiing.net/api/signup/procform', json = new_lead, headers=headers)
+        except Exception as e:
+            return e
+        r_dict = r.json()
         return(r_dict)
+
 
     @classmethod
     def find_by_email(cls, email):

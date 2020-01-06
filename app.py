@@ -1,7 +1,7 @@
 
 from flask import Flask, request
 from flask_restful import Api
-from resources.Lead import get_lead_by_stat, create_lead
+from resources.Lead import create_lead
 import sys
 import logging
 
@@ -18,7 +18,6 @@ api = Api(app)
 
 
 api.add_resource(create_lead, '/create_lead')
-api.add_resource(get_lead_by_stat, '/LeadList_dep')
 
 
 if __name__ == '__main__':
