@@ -128,8 +128,7 @@ class LeadModel(db.Model):
 	                'lastname'  :self.lastName, 
 	                'email'     :self.email, 
 	                'password'  :'Aa123456',
-	                'phone'     :self.phone,
-	                'prefix'    :self.prefix ##
+	                'phone'     :self.prefix + self.phone
                     }
         
         try:
