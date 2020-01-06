@@ -24,7 +24,7 @@ class create_lead(Resource):
                 r = LeadModel.send_lead_branding(lead)
                 message = r['status']
                 if(message == 1 or message == 'true'):
-                    return {'message' : 'Lead created successfully{}'.format(r)}, 201
+                    return {'message' : 'Lead created successfully{}'}, 201
                 else:
                     return {'message' : 'Something went wrong:{}'.format(r)}, 500
             return {'message' : 'Lead created successfully'}, 201
