@@ -26,7 +26,7 @@ class create_lead(Resource):
                 if(message == 1 or message == 'true'):
                     return {'message' : 'Lead created successfully'}, 201
                 else:
-                    return {'message' : 'Something went wrong:{}'.format(r['data'])}, 500
+                    return {'message' : 'Something went wrong:{}'.format(r)}, 500
             return {'message' : 'Lead created successfully'}, 201
         except Exception as e:
             LeadModel.logger("message : Something went wrong when inserting to DB {}".format(e))

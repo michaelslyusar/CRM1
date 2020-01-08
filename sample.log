@@ -20,3 +20,7 @@
 2019-12-30 08:43:25,763:models.Lead:message : Something went wrong when inserting to DB 1
 2019-12-30 08:44:51,116:models.Lead:message : Something went wrong when inserting to DB 'firstName'
 2020-01-06 11:21:54,087:models.Lead:message : Something went wrong when inserting to DB local variable 'r' referenced before assignment
+2020-01-08 20:15:38,573:models.Lead:message : Something went wrong when inserting to DB 'error'
+2020-01-08 20:16:00,627:models.Lead:message : Something went wrong when inserting to DB 'error'
+2020-01-08 20:16:00,627:models.Lead:message : Something went wrong when inserting to DB 'error'
+2020-01-08 20:16:35,736:models.Lead:message : Something went wrong when inserting to DB can only concatenate str (not "dict") to str
