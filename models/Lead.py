@@ -25,10 +25,9 @@ class LeadModel(db.Model):
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
-        self.phone = phone  
+        self.phone = prefix + phone  
         self.country = country  
         self.ip = ip 
-        self.prefix = prefix  
         self.sourceID = sourceID 
         self.affID = affID     
         self.date_created = date_created
@@ -39,7 +38,7 @@ class LeadModel(db.Model):
                 'firsName' : self.firstName,
                 'lastName' :self.lastName,
                 'email' :self.email,
-                'phone' :self.phone, 
+                'phone' :self.prefix + self.phone, 
                 'country' :self.country,   
                 'sourceID' :self.sourceID, 
                 'affID' :self.affID,     

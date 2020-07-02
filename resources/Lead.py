@@ -20,7 +20,7 @@ class create_lead(Resource):
         #Inserting to DB
         try:
             lead.save_to_db()
-            if(data['affID'] == "12"):
+            if(data['affID'] == "1"):
                 r = LeadModel.send_lead_branding(lead)
                 message = r['status']
                 if(message == 1 or message == 'true'):
